@@ -42,35 +42,61 @@
             // Email Verification 
 
             if( $email == $confirmEmail)
-            {   
-            // Check if email in Invalid Format
-            if(filter_var($email, FILTER_VALIDATE_EMAIL))
-            { 
-                $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+             {   
+                // Check if email in Invalid Format
+                if(filter_var($email, FILTER_VALIDATE_EMAIL))
+                 { 
+                    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+                    
+                     // Check Email Repetation
+                     $email_check = mysqli_query($con,"SELECT Email from users WHERE Email = '$email'");
+                    // Count the numbers of rows returned
+                    $num_rows = mysqli_num_rows($email_check);
                 
-                // Check Email Repetation
+                    if($num_rows > 0)
+                    {
+                        echo "This Email already in use";
+                    }
+                 } 
+                else
+                 {
+                    echo "Invalid Email";
+                 }
 
-                $email_check = mysqli_query($con,"SELECT Email from users WHERE Email = '$email'");
-                // Count the numbers of rows returned
-                $num_rows = mysqli_num_rows($email_check);
-                
-                if($num_rows > 0)
-                {
-                    echo "This Email already in use";
-                }
-            }
+             }
             
             else
+             {
+                echo "Email don't match";
+             }
+             // Valid Input
+
+            if (strlen($firstname)>20 || strlen($firstname)<4)
             {
-                echo "Invalid Email";
+                echo "Your first name muste be between 4 and 20 characters<br>";
+            }
+            if (strlen($lastname)>20 || strlen($lastname)<4)
+            {
+                echo "Your last name muste be between 4 and 20 characters<br>";
+            }
+            if($password != $confirmPassword)
+            {
+                echo "Your password do not match";
+            }
+            else
+            {
+                if(preg_match('/[^A-Za-z0-9]/',$password))
+                {
+                    echo "Your password can only contain english characters and numbers<br>";
+                }
+            }
+            if(strlen($password) > 20 || strlen($password) < 8)
+            {
+                echo "Your password must be between 8 and 20 characters<br>";
             }
 
-            }
-        else
-            {
-                echo "Email don't match";
-            }
-    }
+
+     }
 
 
 ?> 
