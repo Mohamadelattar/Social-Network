@@ -39,7 +39,37 @@
         $password = strip_tags($password);                     // Remove tags
         $confirmPassword = strip_tags($confirmPassword);       // Remove tags
 
+            // Email Verification 
 
+            if( $email == $confirmEmail)
+            {   
+            // Check if email in Invalid Format
+            if(filter_var($email, FILTER_VALIDATE_EMAIL))
+            { 
+                $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+                
+                // Check Email Repetation
+
+                $email_check = mysqli_query($con,"SELECT Email from users WHERE Email = '$email'");
+                // Count the numbers of rows returned
+                $num_rows = mysqli_num_rows($email_check);
+                
+                if($num_rows > 0)
+                {
+                    echo "This Email already in use";
+                }
+            }
+            
+            else
+            {
+                echo "Invalid Email";
+            }
+
+            }
+        else
+            {
+                echo "Email don't match";
+            }
     }
 
 
