@@ -130,7 +130,33 @@
                     $check_user = mysqli_query("SELECT username FROM users WHERE username = '$Username' ");
                 }
 
+                // Profile pic
+               $rand = rand(1,2);
+
+                if($rand == 1)
+                {
+                    $profile_pic = "assets/images/profile_pics/defaults/head_deep_blue.png";
+                }
+
+                else if($rand == 2)
+                {
+                    $profile_pic = "assets/images/profile_pics/defaults/head_emerald.png";
+                }
+
+                $query = mysqli_query($con,"INSERT INTO users VALUES ('','$firstname','$lastname','$Username','$email','$password','$date','$profile_pic','0','0','no','')");
+
+                array_push($error_array,"<span style='color:#14C800;'>You're all set! Goahead and Login<br> </span>");
+                $_SESSION["firstname"]="";
+                $_SESSION["Lastname"]="";
+                $_SESSION["email"]="";
+                $_SESSION["confirmEmail"]="";
+                $_SESSION["password"]="";
+                $_SESSION["confirmPassword"]="";
+                
+
             }
+
+            
 
      }
 
@@ -228,6 +254,13 @@
             }
         ?>
         <input type="submit" value="Register" name="register">
+        <br>
+        <?php
+            if(in_array("<span style='color:#14C800;'>You're all set! Goahead and Login<br> </span>",$error_array))
+            {
+                echo "<span style='color:#14C800;'>You're all set! Go ahead and Login<br> </span>";
+            }
+        ?>
         </form>
         
     </body>
