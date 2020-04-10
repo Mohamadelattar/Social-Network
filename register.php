@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     // Connexion with DB
     $con = mysqli_connect("localhost","root","","social");
     if(mysqli_connect_errno())
@@ -16,29 +18,30 @@
         $confirmPassword  = $_POST["confirmPassword"];
 
         // First name
-        $firstname = strip_tags($firstname);                 // Remove tags
-        $firstname = str_replace(' ','',$firstname);         // remove space
-        $firstname = ucfirst(strtolower($firstname));        // Capitilaze the first letter
-
+        $firstname             =  strip_tags($firstname);                  // Remove tags
+        $firstname             =  str_replace(' ','',$firstname);          // remove space
+        $firstname             =  ucfirst(strtolower($firstname));         // Capitilaze the first letter
+        $_SESSION["firstname"] =  $firstname;
         // Last name
-        $lastname = strip_tags($lastname);                    // Remove tags
-        $lastname = str_replace(' ','',$lastname);            // remove space 
-        $lastname = ucwords(strtolower($lastname));           // capitilaze the first letter 
-
+        $lastname              = strip_tags($lastname);                    // Remove tags
+        $lastname              = str_replace(' ','',$lastname);            // remove space 
+        $lastname              = ucwords(strtolower($lastname));           // capitilaze the first letter 
+        $_SESSION["Lastname"]  = $lastname;
         // Email 
-        $email = strip_tags($email);
-        $email = str_replace(' ','',$email);
-        $email = ucwords(strtolower($email));
-
+        $email                  = strip_tags($email);
+        $email                  = str_replace(' ','',$email);
+        $email                  = ucwords(strtolower($email));
+        $_SESSION["email"]      = $email;
         // Email  Confirmation 
-        $confirmEmail = strip_tags($confirmEmail);             // Remove tags
-        $confirmEmail= str_replace(' ','',$confirmEmail);      // remove space 
-        $confirmEmail = ucwords(strtolower($confirmEmail));    // capitilaze the first letter
-
+        $confirmEmail             = strip_tags($confirmEmail);              // Remove tags
+        $confirmEmail             = str_replace(' ','',$confirmEmail);      // remove space 
+        $confirmEmail             = ucwords(strtolower($confirmEmail));     // capitilaze the first letter
+        $_SESSION["confirmEmail"] = $confirmEmail;
         // Password
-        $password = strip_tags($password);                     // Remove tags
-        $confirmPassword = strip_tags($confirmPassword);       // Remove tags
-
+        $password                    = strip_tags($password);               // Remove tags
+        $confirmPassword             = strip_tags($confirmPassword);        // Remove tags
+        $_SESSION["password"]        = $password;
+        $_SESSION["confirmPassword"] = $confirmPassword;
             // Email Verification 
 
             if( $email == $confirmEmail)
@@ -107,17 +110,48 @@
     </head>
     <body>
         <form action="register.php" method="POST">
-        <input type="text" name="firstname" placeholder="First Name" required>
+        <input type="text" name="firstname" placeholder="First Name" value="<?php 
+            if(isset($_SESSION["firstname"]))
+            {
+                echo $_SESSION["firstname"];
+            }
+        ?>" required>
         <br>
-        <input type="text" name="Lastname" placeholder="Last Name" required>
+        <input type="text" name="Lastname" placeholder="Last Name" value="<?php
+            if(isset($_SESSION["Lastname"]))
+            {
+                echo $_SESSION["Lastname"];
+            }
+        
+        ?>" required>
         <br>
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="email" name="email" placeholder="Email"  value="<?php
+            if(isset($_SESSION["email"]))
+            {
+                echo $_SESSION["email"];
+            }
+        ?>"required>
         <br>
-        <input type="email" name="confirmEmail" placeholder="Confirm Email" required>
+        <input type="email" name="confirmEmail" placeholder="Confirm Email" value="<?php
+            if(isset($_SESSION["confirmEmail"]))
+            {
+                echo $_SESSION["confirmEmail"];
+            }
+        ?>" required>
         <br>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password" value="<?php
+            if(isset($_SESSION["password"]))
+            {
+                echo $_SESSION["password"];
+            }
+        ?>" required>
         <br>
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" value="<?php
+            if(isset($_SESSION["confirmPassword"]))
+            {
+                echo $_SESSION["confirmPassword"];
+            }
+        ?>" required>
         <br>
         <input type="submit" value="Register" name="register">
         </form>
