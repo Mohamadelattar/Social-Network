@@ -7,6 +7,9 @@
     {
         echo "Failed to connect". mysqli_connect_errno();
     }
+
+    // Error Array
+    $error_array = array();
     if(isset($_POST["register"]))
     {
         // Form Data
@@ -16,7 +19,7 @@
         $confirmEmail     = $_POST["confirmEmail"];
         $password         = $_POST["password"];
         $confirmPassword  = $_POST["confirmPassword"];
-
+        
         // First name
         $firstname             =  strip_tags($firstname);                  // Remove tags
         $firstname             =  str_replace(' ','',$firstname);          // remove space
@@ -42,6 +45,9 @@
         $confirmPassword             = strip_tags($confirmPassword);        // Remove tags
         $_SESSION["password"]        = $password;
         $_SESSION["confirmPassword"] = $confirmPassword;
+
+        // Date;
+        $date = date("y-m-d");
             // Email Verification 
 
             if( $email == $confirmEmail)
@@ -58,44 +64,53 @@
                 
                     if($num_rows > 0)
                     {
-                        echo "This Email already in use";
+                        
+                        array_push($error_array,"This Email already in use<br>");
                     }
                  } 
                 else
                  {
-                    echo "Invalid Email";
+                    array_push($error_array,"Invalid Email<br>");
+                     
                  }
 
              }
             
             else
              {
-                echo "Email don't match";
+                array_push($error_array,"Email don't match<br>");
+                 
              }
              // Valid Input
 
             if (strlen($firstname)>20 || strlen($firstname)<4)
             {
-                echo "Your first name muste be between 4 and 20 characters<br>";
+                array_push($error_array,"Your first name muste be between 4 and 20 characters<br>");
             }
+
             if (strlen($lastname)>20 || strlen($lastname)<4)
             {
-                echo "Your last name muste be between 4 and 20 characters<br>";
+                array_push($error_array,"Your last name muste be between 4 and 20 characters<br>");
             }
+
             if($password != $confirmPassword)
             {
-                echo "Your password do not match";
+                array_push($error_array,"Your password do not match<br>");
             }
             else
             {
                 if(preg_match('/[^A-Za-z0-9]/',$password))
                 {
-                    echo "Your password can only contain english characters and numbers<br>";
+                
+                    array_push($error_array,"Your password can only contain english characters and numbers<br>");
                 }
             }
+
             if(strlen($password) > 20 || strlen($password) < 8)
             {
-                echo "Your password must be between 8 and 20 characters<br>";
+            
+                array_push($error_array,"Your password must be between 8 and 20 characters<br>");
+            
             }
 
 
@@ -117,6 +132,12 @@
             }
         ?>" required>
         <br>
+        <?php
+            if(in_array("Your first name muste be between 4 and 20 characters<br>",$error_array))
+            {
+                echo "Your first name muste be between 4 and 20 characters<br>";
+            }
+         ?>
         <input type="text" name="Lastname" placeholder="Last Name" value="<?php
             if(isset($_SESSION["Lastname"]))
             {
@@ -125,6 +146,12 @@
         
         ?>" required>
         <br>
+        <?php
+            if(in_array("Your last name muste be between 4 and 20 characters<br>",$error_array))
+            {
+                echo "Your last name muste be between 4 and 20 characters<br>";
+            }
+        ?>
         <input type="email" name="email" placeholder="Email"  value="<?php
             if(isset($_SESSION["email"]))
             {
@@ -139,6 +166,21 @@
             }
         ?>" required>
         <br>
+        <?php
+            if(in_array("This Email already in use<br>",$error_array))
+            {
+                echo "This Email already in use<br>";
+            }
+            else if(in_array("Invalid Email<br>",$error_array))
+            {
+                echo "Invalid Email<br>";
+            }
+            else if(in_array("Email don't match<br>",$error_array))
+            {
+                echo "Email don't match<br>";
+            }
+
+        ?>
         <input type="password" name="password" placeholder="Password" value="<?php
             if(isset($_SESSION["password"]))
             {
@@ -153,6 +195,20 @@
             }
         ?>" required>
         <br>
+        <?php
+            if(in_array("Your password do not match<br>",$error_array))
+            {
+                echo "Your password do not match<br>";
+            }
+            else if(in_array("Your password can only contain english characters and numbers<br>",$error_array))
+            {
+                echo "Your password can only contain english characters and numbers<br>";
+            }
+            else if(in_array("Your password must be between 8 and 20 characters<br>",$error_array))
+            {
+                echo "Your password must be between 8 and 20 characters<br>";
+            }
+        ?>
         <input type="submit" value="Register" name="register">
         </form>
         
