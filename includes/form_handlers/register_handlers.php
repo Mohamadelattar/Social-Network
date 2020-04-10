@@ -14,28 +14,28 @@
          $confirmPassword  = "";
          
          // First name
-         $firstname             =  strip_tags($firstname);                  // Remove tags
+         $firstname             =  strip_tags($_POST["firstname"]);                  // Remove tags
          $firstname             =  str_replace(' ','',$firstname);          // remove space
          $firstname             =  ucfirst(strtolower($firstname));         // Capitilaze the first letter
          $_SESSION["firstname"] =  $firstname;
          // Last name
-         $lastname              = strip_tags($lastname);                    // Remove tags
+         $lastname              = strip_tags($_POST["Lastname"]);                    // Remove tags
          $lastname              = str_replace(' ','',$lastname);            // remove space 
          $lastname              = ucwords(strtolower($lastname));           // capitilaze the first letter 
          $_SESSION["Lastname"]  = $lastname;
          // Email 
-         $email                  = strip_tags($email);
+         $email                  = strip_tags($_POST["email"]);
          $email                  = str_replace(' ','',$email);
          $email                  = ucwords(strtolower($email));
          $_SESSION["email"]      = $email;
          // Email  Confirmation 
-         $confirmEmail             = strip_tags($confirmEmail);              // Remove tags
+         $confirmEmail             = strip_tags($_POST["confirmEmail"]);              // Remove tags
          $confirmEmail             = str_replace(' ','',$confirmEmail);      // remove space 
          $confirmEmail             = ucwords(strtolower($confirmEmail));     // capitilaze the first letter
          $_SESSION["confirmEmail"] = $confirmEmail;
          // Password
-         $password                    = strip_tags($password);               // Remove tags
-         $confirmPassword             = strip_tags($confirmPassword);        // Remove tags
+         $password                    = strip_tags($_POST["password"]);               // Remove tags
+         $confirmPassword             = strip_tags($_POST["confirmPassword"]);        // Remove tags
          $_SESSION["password"]        = $password;
          $_SESSION["confirmPassword"] = $confirmPassword;
  
@@ -120,7 +120,7 @@
                  {
                      $i++;
                      $Username = $Username.$i;
-                     $check_user = mysqli_query("SELECT username FROM users WHERE username = '$Username' ");
+                     $check_user = mysqli_query($con,"SELECT username FROM users WHERE username = '$Username' ");
                  }
  
                  // Profile pic

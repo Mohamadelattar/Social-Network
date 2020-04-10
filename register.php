@@ -1,14 +1,27 @@
 <?php
-
+    
     require 'config/config.php';
-    require 'includes/form_handlers/register_handlers.php'
+    require 'includes/form_handlers/register_handlers.php';
+    require 'includes/form_handlers/login_handlers.php';
 ?>
  <html>
       <head>
          <title>Register</title>
      
      </head>
-     <body>
+      <body>
+     <!--
+     <form action="register.php" method="POST">
+     <input type="email" name="log_email" placeholder="Email" required>
+     <br>
+     <input type="password" name="log_password" placeholder="password" required>
+     <br>
+     <input type="submit" name="login" value="Login">
+     </form> 
+      -->
+
+     <!----------------------- Regestration Form -------------------->
+      
          <form action="register.php" method="POST">
          <input type="text" name="firstname" placeholder="First Name" value="<?php 
              if(isset($_SESSION["firstname"]))
