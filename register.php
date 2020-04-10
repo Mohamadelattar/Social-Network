@@ -113,6 +113,24 @@
             
             }
 
+            if(empty($error_array))
+            {
+                // Encrypt Password
+                $password = md5($password);
+
+                // Generate Username
+                $Username = $firstname."_".$lastname;
+                $check_user = mysqli_query($con,"SELECT username FROM users WHERE username = '$Username' ");
+                $i=0;
+                // if username exist 
+                while(mysqli_num_rows($check_user) != 0)
+                {
+                    $i++;
+                    $Username = $Username.$i;
+                    $check_user = mysqli_query("SELECT username FROM users WHERE username = '$Username' ");
+                }
+
+            }
 
      }
 
