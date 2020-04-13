@@ -145,6 +145,7 @@
                  $_SESSION["confirmEmail"]="";
                  $_SESSION["password"]="";
                  $_SESSION["confirmPassword"]="";
+                 $_SESSION["log_email"] = "";
  
  
              }

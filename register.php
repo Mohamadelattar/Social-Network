@@ -10,15 +10,26 @@
      
      </head>
       <body>
-     <!--
+     
      <form action="register.php" method="POST">
-     <input type="email" name="log_email" placeholder="Email" required>
+     <input type="email" name="log_email" placeholder="Email" value="<?php 
+             if(isset($_SESSION["log_email"]))
+             {
+                 echo $_SESSION["log_email"];
+             }
+         ?>"required>
      <br>
      <input type="password" name="log_password" placeholder="password" required>
      <br>
      <input type="submit" name="login" value="Login">
+     <?php
+            if(in_array("Email or password was incorrect<br>",$error_array))
+            {
+                echo "Email or password was incorrect<br>";
+            }
+        ?>
      </form> 
-      -->
+      
 
      <!----------------------- Regestration Form -------------------->
       
@@ -82,19 +93,9 @@
 
 
 
-        <input type="password" name="password" placeholder="Password" value="<?php
-            if(isset($_SESSION["password"]))
-            {
-                echo $_SESSION["password"];
-            }
-        ?>" required>
+        <input type="password" name="password" placeholder="Password"   required>
         <br>
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" value="<?php
-            if(isset($_SESSION["confirmPassword"]))
-            {
-                echo $_SESSION["confirmPassword"];
-            }
-        ?>" required>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password"   required>
         <br>
         <?php
             if(in_array("Your password do not match<br>",$error_array))
