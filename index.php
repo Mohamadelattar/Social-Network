@@ -1,3 +1,7 @@
+<?php
+    include("header.php");
+    session_destroy();
+?>
 <html>
 
 <head>

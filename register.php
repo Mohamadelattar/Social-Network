@@ -49,7 +49,7 @@
                 }
             ?>"required>
         <br>
-        <input type="password" name="log_password" placeholder="password" required>
+        <input type="password" name="log_password" placeholder="Password" required>
         <br>
         <?php
                 if(in_array("Email or password was incorrect<br>",$error_array))
