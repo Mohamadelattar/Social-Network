@@ -1,4 +1,4 @@
-<?php
+ <?php
     
     require 'config/config.php';
     require 'includes/form_handlers/register_handlers.php';
@@ -6,33 +6,64 @@
 ?>
  <html>
       <head>
-         <title>Register</title>
+         <title>Welecome to Medbook</title>
+         <link rel="stylesheet" href="assets/css/register_style.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <script src="assets/js/register.js"></script>
      
      </head>
       <body>
-     
-     <form action="register.php" method="POST">
-     <input type="email" name="log_email" placeholder="Email" value="<?php 
-             if(isset($_SESSION["log_email"]))
-             {
-                 echo $_SESSION["log_email"];
-             }
-         ?>"required>
-     <br>
-     <input type="password" name="log_password" placeholder="password" required>
-     <br>
-     <input type="submit" name="login" value="Login">
-     <?php
-            if(in_array("Email or password was incorrect<br>",$error_array))
-            {
-                echo "Email or password was incorrect<br>";
-            }
-        ?>
-     </form> 
-      
+      <?php  
 
+	if(isset($_POST['register'])) {
+		echo '
+		<script>
+
+		$(document).ready(function() {
+			$("#first").hide();
+			$("#second").show();
+		});
+
+		</script>
+
+		';
+	}
+
+
+	?>
+<div class="wrapper">
+    
+    <div class="login_box">    
+     
+       <div class="login_header">
+           <h1>Welecome to Medbook</h1>
+             Login or signup are below
+       </div>
+       
+       <div id="first">
+        <form action="register.php" method="POST">
+            <input type="email" name="log_email" placeholder="Email" value="<?php 
+                 if(isset($_SESSION["log_email"]))
+                {
+                     echo $_SESSION["log_email"];
+                }
+            ?>"required>
+        <br>
+        <input type="password" name="log_password" placeholder="password" required>
+        <br>
+        <?php
+                if(in_array("Email or password was incorrect<br>",$error_array))
+                {
+                    echo "Email or password was incorrect<br>";
+                }
+            ?>
+        <input type="submit" name="login" value="Login">
+        <br>
+        <a href="#second" id="signup" class="signup" >Need an accaount ? Register Here </a>
+     </form>   
+     </div>
      <!----------------------- Regestration Form -------------------->
-      
+      <div id="second">
          <form action="register.php" method="POST">
          <input type="text" name="firstname" placeholder="First Name" value="<?php 
              if(isset($_SESSION["firstname"]))
@@ -119,8 +150,12 @@
                 echo "<span style='color:#14C800;'>You're all set! Go ahead and Login<br> </span>";
             }
         ?>
+        <br>
+        <a href="#" id="signin" class="signin" >Already have an accaount ? Sign in here! </a>
         </form>
-        
+        </div>
+       </div>
+     </div>   
     </body>
 
 
