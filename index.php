@@ -1,12 +1,13 @@
-<?php
-    include("header.php");
-    session_destroy();
-?>
-<html>
+<?php  
+require 'header.php';
 
+?>
+
+<html>
 <head>
+	<title>Welcome to Swirlfeed</title>
 </head>
 <body>
-    <h1>Hello</h1>
+	Hello Reece!!!!!
 </body>
 </html>

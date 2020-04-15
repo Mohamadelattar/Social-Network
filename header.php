@@ -31,6 +31,9 @@
             <a href="index.php">MedBook!</a>
         </div>
         <nav>
+            <a href="">
+                <?php echo $user["FirstName"]; ?>
+            </a>
             <a href="#">
             <i class="fas fa-home"></i>
             </a>
