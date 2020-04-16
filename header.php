@@ -31,7 +31,7 @@
             <a href="index.php">MedBook!</a>
         </div>
         <nav>
-            <a href="">
+            <a href="<?php echo $userLoggedIn; ?>">
                 <?php echo $user["FirstName"]; ?>
             </a>
             <a href="#">
@@ -49,6 +49,10 @@
             <a href="#">
             <i class="fas fa-cog"></i>
             </a>
+            <a href="includes/handlers/logout.php">
+				<i class="fa fa-sign-out fa-lg"></i>
+			</a>
+
         </nav>
       </div>
       <div class="wrapper"></div>

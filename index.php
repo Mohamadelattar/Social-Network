@@ -1,16 +1,21 @@
 <?php  
 include('header.php');
+include('includes/classes/User.php');
+include('includes/classes/Post.php');
 
+
+if(isset($_POST['post'])){
+	$post = new Post($con , $userLoggedIn);
+	$post->submitPost($_POST['post_text'], 'none');
+}
+ 
 ?>
-<head>
-<link rel="stylesheet" href="assets/css/style.css">
-
-</head>
+ 
 <div class="wrapper">
     <div class="user_details column">
-        <a href=""> <img src="<?php echo $user ["profile_pics"]; ?> " alt=""> </a>
+        <a href="<?php echo $userLoggedIn; ?>"> <img src="<?php echo $user ["profile_pics"]; ?> " alt=""> </a>
         <div class="user_details_left_right">
-            <a href="">
+            <a href="<?php echo $userLoggedIn; ?>">
             <?php
                 echo $user["FirstName"]." ".$user["LastName"];
             
@@ -29,6 +34,11 @@ include('header.php');
             <input type="submit" name="post" id="post_button" value="Post">
             <hr>
         </form>
+        <?php
+            $user_obj  =  new User($con , $userLoggedIn);
+
+            echo $user_obj->getFirstAndLastName();
+        ?>
     </div>
     </div>
 
