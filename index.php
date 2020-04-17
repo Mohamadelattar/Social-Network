@@ -40,7 +40,7 @@ if(isset($_POST['post'])){
 
     </div>
     </div>
-    <script>
+	<script>
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
 
 	$(document).ready(function() {
@@ -94,6 +94,11 @@ if(isset($_POST['post'])){
 	});
 
 	</script>
+
+
+</div>
+
+
 
 </body>
 </html>

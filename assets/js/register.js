@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
 	//On click signup, hide login and show registration form
@@ -17,18 +16,3 @@ $(document).ready(function() {
 
 
 });
-/*
-function Inverser()
-{
-    document.getElementById("first").style("display : none");
-    document.getElementById("second").style("display : block");
-
-}
-function show()
-{
-    document.getElementById("first").style("display : block");
-    document.getElementById("second").style("display : none");
-
-}
-
-*/
