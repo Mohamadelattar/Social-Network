@@ -40,12 +40,27 @@ class Post {
 		}
 	}
 
-    public function LoadPostsFriends() 
+    public function LoadPostsFriends($data, $limit) 
     {
+
+		$page = $data['page']; 
+		$userLoggedIn = $this->user_obj->getUsername();
+
+		if($page == 1) 
+			$start = 0;
+		else 
+			$start = ($page - 1) * $limit;
+
+
 		$str = ""; //String to return 
-        $data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
-        
-			while($row = mysqli_fetch_array($data)) {
+        $data_query = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
+        if(mysqli_num_rows($data_query) > 0) {
+
+
+			$num_iterations = 0; //Number of results checked (not necasserily posted)
+			$count = 1;
+
+			while($row = mysqli_fetch_array($data_query)) {
 				$id = $row['id'];
 				$body = $row['body'];
 				$added_by = $row['added_by'];
@@ -67,6 +82,17 @@ class Post {
 					continue;
 				}
                 
+					if($num_iterations++ < $start)
+						continue; 
+
+
+					//Once 10 posts have been loaded, break
+					if($count > $limit) {
+						break;
+					}
+					else {
+						$count++;
+					}
 					$user_details_query = mysqli_query($this->con, "SELECT FirstName, LastName, profile_pics FROM users WHERE username='$added_by'");
                     $user_row = mysqli_fetch_array($user_details_query);
                     $first_name = $user_row['FirstName'];
@@ -152,9 +178,16 @@ class Post {
 
 							</div>
 							<hr>";
-				
+				}							
+							if($count > $limit) 
+							$str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
+										<input type='hidden' class='noMorePosts' value='false'>";
+						else 
+							$str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> No more posts to show! </p>";
+					
                   
-			}
+			
+		}
 
             echo $str;
 
