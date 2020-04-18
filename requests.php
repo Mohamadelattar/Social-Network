@@ -1,7 +1,7 @@
 <?php
 include("header.php"); //Header 
 ?>
-
+<div class="wrapper">
 <div class="main_column column" id="main_column">
 
 	<h4>Friend Requests</h4>
@@ -51,4 +51,5 @@ include("header.php"); //Header
 	?>
 
 
+</div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+ 
 class Post {
 	private $user_obj;
 	private $con;
