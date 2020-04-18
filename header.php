@@ -43,7 +43,7 @@
 			<form action="search.php" method="GET" name="search_form">
 				<input type="text" onkeyup="getLiveSearchUsers(this.value, '<?php echo $userLoggedIn; ?>')" name="q" placeholder="Search..." autocomplete="off" id="search_text_input">
 
-				<div class="button_holder">
+				<div class="button_holder search_results_footer_empty ">
 					<img src="assets/images/icons/magnifying_glass.png">
 				</div>
 
