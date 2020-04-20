@@ -12,6 +12,11 @@ body {
 	background-color: #E6EAE8;
 }
 
+a {
+	color: #20AAE5;
+	text-decoration: none;
+}
+
 .top_bar {
 	width: 100%;
 	min-width: 1050px;
@@ -73,10 +78,10 @@ nav a:hover {
 	border-radius: 5px;
 	box-shadow: 2px 2px 1px #D3D3D3;
 	z-index: -1;
+	color: #555;
 }
 
 .user_details {
-	
 	width: 250px;
 	float: left;
 	margin-bottom: 20px;
@@ -98,7 +103,7 @@ nav a:hover {
 	float:right;
 	width: 70%;
 	z-index: -1;
-	min-height: 160px;
+	min-height: 170px;
 }
 
 .post_form {
@@ -138,12 +143,12 @@ textarea:focus {
 	padding: 5px 4px 4px 5px;
 }
 
-
 .status_post {
 	width: 96%;
 	font-size: 15px;
 	padding: 0px 5px;
 	min-height: 75px;
+	cursor:pointer;
 }
 
 .post_profile_pic {
@@ -154,6 +159,7 @@ textarea:focus {
 .post_profile_pic img {
 	border-radius: 5px;
 }
+
 #comment_iframe {
 	max-height: 250px;	
 	width: 100%;
@@ -291,7 +297,7 @@ textarea:focus {
 	color: #fff;
 	background-color: #2ecc71;
 }
-#ignore_button {
+#ignore_button  {
 	width: 20%;
 	height: 28px;
 	border-radius: 5px;
@@ -323,6 +329,7 @@ textarea:focus {
 	margin: 10 0 0 7px;
 
 }
+
 #message_textarea {
 	width: 80%;
 	margin-right: 8px;
@@ -396,7 +403,7 @@ textarea:focus {
 
 .resultDisplay {
 	padding: 5px 5px 0 5px;
-	height: 60px;
+	height: 70px;
 	border-bottom: 1px solid #D3D3D3;
 }
 .resultDisplay a {
@@ -454,8 +461,6 @@ textarea:focus {
 	left: 8px;
 	top: -5px;
 }
-
-
 
 .resultDisplayNotification {
 	height: auto;
@@ -553,5 +558,34 @@ textarea:focus {
 #search_hr {
 	margin-bottom: 0px;
 }
+
+.small_profile_pic {
+	height: 55px;
+    margin: 1px 12px 0 2px;
+    float: left;
+}
+
+.settings_input {
+	border: 1px solid #ccc;
+    height: 20px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.settings_submit {
+	border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+
+
+
+
 
 
