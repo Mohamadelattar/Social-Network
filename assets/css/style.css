@@ -581,7 +581,25 @@ textarea:focus {
     border-radius: 5px;
     color: #fff;
 }
-
+.message .deleteButton {
+	color: #fff;
+	margin: 0 5px 5px 0;
+	cursor: pointer;
+ }
+ 
+ .postedImage img {
+	 max-height: 300px;
+	 max-width: 100%;
+	 display: block;
+	 margin: 5px auto;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 
