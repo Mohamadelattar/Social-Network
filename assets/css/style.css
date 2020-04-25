@@ -297,7 +297,7 @@ textarea:focus {
 	color: #fff;
 	background-color: #2ecc71;
 }
-#ignore_button  {
+#ignore_button {
 	width: 20%;
 	height: 28px;
 	border-radius: 5px;
@@ -565,7 +565,7 @@ textarea:focus {
     float: left;
 }
 
-.settings_input {
+#settings_input {
 	border: 1px solid #ccc;
     height: 20px;
     padding: 4px 6px;
@@ -581,26 +581,20 @@ textarea:focus {
     border-radius: 5px;
     color: #fff;
 }
-.message .deleteButton {
-	color: #fff;
-	margin: 0 5px 5px 0;
-	cursor: pointer;
- }
- 
- .postedImage img {
-	 max-height: 300px;
-	 max-width: 100%;
-	 display: block;
-	 margin: 5px auto;
- }
- 
- 
- 
- 
- 
- 
- 
 
+
+.message .deleteButton {
+   color: #fff;
+   margin: 0 5px 5px 0;
+   cursor: pointer;
+}
+
+.postedImage img {
+	max-height: 300px;
+    max-width: 100%;
+    display: block;
+    margin: 5px auto;
+}
 
 
 

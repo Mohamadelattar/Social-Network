@@ -12,7 +12,7 @@ if(isset($_POST['update_details'])) {
 	if($matched_user == "" || $matched_user == $userLoggedIn) {
 		$message = "Details updated!<br><br>";
 
-		$query = mysqli_query($con, "UPDATE users SET first_name='$first_name', last_name='$last_name', email='$email' WHERE username='$userLoggedIn'");
+		$query = mysqli_query($con, "UPDATE users SET FirstName='$first_name', LastName='$last_name', email='$email' WHERE username='$userLoggedIn'");
 	}
 	else 
 		$message = "That email is already in use!<br><br>";

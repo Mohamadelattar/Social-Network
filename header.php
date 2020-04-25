@@ -23,6 +23,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css" />
         <!----------- Javascript ------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="assets/js/bootstrap.js"></script>
@@ -161,6 +162,6 @@
 	</script>
 
 
-      <div class="wrapper"></div>
+      <div class="wrapper">
     </body>
 </html>

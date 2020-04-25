@@ -29,3 +29,4 @@ if(isset($_POST['close_account'])) {
 	</form>
 
 </div>
+</div>

@@ -24,7 +24,7 @@ if(isset($_POST['post'])){
 		}
 
 		if($uploadOk) {
-			if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $imageName)) {
+			if(@move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $imageName)) {
 				//image uploaded okay
 			}
 			else {
@@ -75,7 +75,8 @@ if(isset($_POST['post'])){
         </form>
  
         <div class="posts_area"></div>
-        <img id="loading" src="assets/images/icons/loading.gif">
+		<!-- <button id="load_more">Load More Posts</button> -->
+		<img id="loading" src="assets/images/icons/loading.gif">
 
     </div>
 	<div class="user_details column">
@@ -104,6 +105,7 @@ if(isset($_POST['post'])){
 			?>
 		</div>
     </div>
+	</div>
 	<script>
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
 
@@ -142,6 +144,7 @@ if(isset($_POST['post'])){
 					success: function(response) {
 						$('.posts_area').find('.nextPage').remove(); //Removes current .nextpage 
 						$('.posts_area').find('.noMorePosts').remove(); //Removes current .nextpage 
+						$('.posts_area').find('.noMorePostsText').remove(); //Removes current .nextpage 
 
 						$('#loading').hide();
 						$('.posts_area').append(response);

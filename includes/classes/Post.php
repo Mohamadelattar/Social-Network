@@ -12,6 +12,8 @@ class Post {
 	public function submitPost($body, $user_to ,$imageName) {
 		$body = strip_tags($body); //removes html tags 
 		$body = mysqli_real_escape_string($this->con, $body);
+		$body = str_replace('\r\n', "\n", $body);
+		$body = nl2br($body);
 		$check_empty = preg_replace('/\s+/', '', $body); //Deltes all spaces 
       
 		if($check_empty != "") {
@@ -316,6 +318,7 @@ class Post {
 								<div id='post_body'>
 									$body
 									<br>
+									$imageDiv
 									<br>
 									<br>
 								</div>
@@ -623,7 +626,7 @@ class Post {
 					?>
 					<script> 
 						function toggle<?php echo $id; ?>() {
-
+							if( !e ) e = window.event;
 							var target = $(event.target);
 							if (!target.is("a")) {
 								var element = document.getElementById("toggleComment<?php echo $id; ?>");

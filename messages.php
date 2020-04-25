@@ -98,4 +98,4 @@ if(isset($_POST['post_message'])) {
 			<a href="messages.php?u=new">New Message</a>
 
 		</div>
-		</div>
+		 

@@ -1,6 +1,6 @@
 <?php
 
-include("includes/header.php");
+include("header.php");
 
 if(isset($_GET['q'])) {
 	$query = $_GET['q'];
@@ -108,10 +108,10 @@ else {
 
 
 					<div class='result_profile_pic'>
-						<a href='" . $row['username'] ."'><img src='". $row['profile_pic'] ."' style='height: 100px;'></a>
+						<a href='" . $row['username'] ."'><img src='". $row['profile_pics'] ."' style='height: 100px;'></a>
 					</div>
 
-						<a href='" . $row['username'] ."'> " . $row['first_name'] . " " . $row['last_name'] . "
+						<a href='" . $row['username'] ."'> " . $row['FirstName'] . " " . $row['LastName'] . "
 						<p id='grey'> " . $row['username'] ."</p>
 						</a>
 						<br>
